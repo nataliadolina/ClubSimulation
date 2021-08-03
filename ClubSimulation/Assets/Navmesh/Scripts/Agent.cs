@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public abstract class Agent : MonoBehaviour
 {
-    protected Transform[] aims = null;
-    private NavMeshAgent navMeshAgent;
+    protected Vector3[] aims = null;
+    protected NavMeshAgent navMeshAgent;
 
     private float stoppingDist = 0f;
 
@@ -29,9 +29,9 @@ public abstract class Agent : MonoBehaviour
         }
     }
 
-    private void SetNewAim()
+    protected virtual void SetNewAim()
     {
         var currentAim = aims[Random.Range(0, aims.Length)];
-        navMeshAgent.destination = currentAim.position;
+        navMeshAgent.destination = currentAim;
     }
 }
